@@ -49,6 +49,11 @@ RUN easy-add --var os=${TARGETOS} --var arch=${TARGETARCH}${TARGETVARIANT} \
   --var version=${MC_SERVER_RUNNER_VERSION} --var app=mc-server-runner --file {{.app}} \
   --from ${GITHUB_BASEURL}/itzg/{{.app}}/releases/download/{{.version}}/{{.app}}_{{.version}}_{{.os}}_{{.arch}}.tar.gz
 
+# Install awscli and zip
+RUN apt-get update && apt-get install -y awscli zip
+
+
+
 ARG MC_HELPER_VERSION=1.37.6
 ARG MC_HELPER_BASE_URL=${GITHUB_BASEURL}/itzg/mc-image-helper/releases/download/${MC_HELPER_VERSION}
 # used for cache busting local copy of mc-image-helper
@@ -70,10 +75,14 @@ COPY --chmod=755 bin/ /usr/local/bin/
 COPY --chmod=755 bin/mc-health /health.sh
 COPY --chmod=644 files/* /image/
 COPY --chmod=755 files/auto /auto
+COPY --chmod=755 bootstrap/* /bootstrap/
 
 RUN curl -fsSL -o /image/Log4jPatcher.jar https://github.com/CreeperHost/Log4jPatcher/releases/download/v1.0.1/Log4jPatcher-1.0.1.jar
 
+RUN dos2unix /bootstrap/download-previous-world
 RUN dos2unix /start* /auto/*
 
 ENTRYPOINT [ "/start" ]
 HEALTHCHECK --start-period=1m --interval=5s --retries=24 CMD mc-health
+
+RUN dos2unix /bootstrap/cleanup-and-save
