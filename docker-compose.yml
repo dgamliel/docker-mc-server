@@ -2,15 +2,23 @@ version: "3.8"
 
 services:
   mc:
-    image: itzg/minecraft-server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mc
     environment:
       EULA: "true"
+      WORLD: "/world"
     ports:
       - "25565:25565"
     volumes:
       - data:/data
+      - world:/world
+      - ~/.aws:/root/.aws:ro
     stdin_open: true
     tty: true
-    restart: unless-stopped
+    restart: "no"
+
 volumes:
   data: {}
+  world: {}  
