@@ -14,7 +14,6 @@ services:
     volumes:
       - data:/data
       - world:/world
-      - ~/.aws:/root/.aws:ro
     stdin_open: true
     tty: true
     restart: "no"

@@ -15,9 +15,10 @@ sudo yum install git -y
 
 # Clone the GitHub repository
 git clone https://github.com/dgamliel/docker-mc-server/tree/master 
+git clone https://github.com/dgamliel/docker-mc-server
 
 # Change directory into the cloned repository
-cd docker-minecraft-server
+cd docker-mc-server
 
 # Install Docker Compose
 sudo curl -L "https://github.com/docker/compose/releases/download/v2.6.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
