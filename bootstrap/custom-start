@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dos2unix /start
+/start
 
 # Cleanup by zipping up the world and uploading it to S3
-dos2unix /scripts/cleanup-and-save
+dos2unix /bootstrap/cleanup-and-save

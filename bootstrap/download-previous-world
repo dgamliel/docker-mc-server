@@ -7,6 +7,7 @@ if [ -f "$HOME/.aws/credentials" ]; then
 	echo "Found .aws/credentials file"
 else
 	echo "Unable to find .aws/credentials file"
+	exit 1
 fi
 
 
