@@ -1,4 +1,4 @@
 #!/bin/bash
-
+echo "Cleaning up and saving world to S3"
 zip -r /mc_world.zip /data
 aws s3 cp /mc_world.zip s3://dgamliel-minecraft-jars/worlds/dgamliel/mc_world.zip

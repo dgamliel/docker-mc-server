@@ -82,7 +82,6 @@ RUN curl -fsSL -o /image/Log4jPatcher.jar https://github.com/CreeperHost/Log4jPa
 RUN dos2unix /bootstrap/download-previous-world
 RUN dos2unix /start* /auto/*
 
-ENTRYPOINT [ "/start" ]
+# ENTRYPOINT [ "/start" ]
+ENTRYPOINT [ "/bootstrap/custom-start" ]
 HEALTHCHECK --start-period=1m --interval=5s --retries=24 CMD mc-health
-
-RUN dos2unix /bootstrap/cleanup-and-save

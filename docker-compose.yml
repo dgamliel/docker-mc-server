@@ -2,19 +2,22 @@ version: "3.8"
 
 services:
   mc:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+      # image: dgamliel/minecraft:latest
+    image: dgamliel/minecraft:latest
     container_name: mc
     environment:
       EULA: "true"
       WORLD: "/world"
+      JVM_XX_OPTS: "-XX:MaxRAMPercentage=75"
+      MEMORY: ""
     ports:
       - "25565:25565"
     volumes:
       - data:/data
       - world:/world
-      - ~/.aws:/root/.aws:ro
     stdin_open: true
     tty: true
     restart: "no"
