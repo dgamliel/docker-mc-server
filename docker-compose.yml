@@ -3,9 +3,9 @@ version: "3.8"
 services:
   mc:
     build:
-      context: .
-      dockerfile: Dockerfile
-    # image: dgamliel/minecraft:latest
+      # context: .
+      # dockerfile: Dockerfile
+    image: dgamliel/minecraft:latest
     container_name: mc
     environment:
       EULA: "true"
