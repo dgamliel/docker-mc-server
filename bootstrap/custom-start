@@ -1,7 +1,7 @@
 #!/bin/bash
-/bootstrap/download-previous-world dgamliel mc_world
+/bootstrap/download-previous-world "dgamliel" "mc_world"
 
 /start
 
 # Cleanup by zipping up the world and uploading it to S3
-/bootstrap/cleanup-and-save dgamliel mc_world
+/bootstrap/cleanup-and-save "dgamliel" "mc_world"
