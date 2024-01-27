@@ -2,11 +2,10 @@ version: "3.8"
 
 services:
   mc:
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile
-      # image: dgamliel/minecraft:latest
-    image: dgamliel/minecraft:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # image: dgamliel/minecraft:latest
     container_name: mc
     environment:
       EULA: "true"
@@ -18,6 +17,7 @@ services:
     volumes:
       - data:/data
       - world:/world
+      - ~/.aws:/root/.aws
     stdin_open: true
     tty: true
     restart: "no"
